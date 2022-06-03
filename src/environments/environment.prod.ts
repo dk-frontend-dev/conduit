@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: '//fdffd.com'
+  apiUrl: 'https://api.realworld.io/api'
 }

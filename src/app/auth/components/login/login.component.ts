@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core'
+import {Observable} from 'rxjs'
+
+import {AuthService} from '@/auth/services/auth.service'
 
 @Component({
   selector: 'app-login',
@@ -6,7 +9,15 @@ import {Component, OnInit} from '@angular/core'
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  constructor() {}
+  result!: any
 
-  ngOnInit(): void {}
+  constructor(private authService: AuthService) {}
+
+  login() {}
+
+  ngOnInit(): void {
+    this.authService.login({email: 'fdf2222@gmail.com', password: '12345678'}).subscribe(data => {
+      this.result = data
+    })
+  }
 }
