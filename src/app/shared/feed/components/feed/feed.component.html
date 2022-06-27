@@ -1,0 +1,26 @@
+<ng-container *ngIf="feed$ | async as feed; else loading">
+  <article class="article-preview" *ngFor="let item of feed">
+    <div class="article-meta">
+      <a href="#">
+        <img [src]="item.author.image" alt="" />
+      </a>
+      <div class="info">
+        <a href="#" class="author">{{ item.author.username }}</a>
+        <span class="date">{{ item.createdAt | date: 'longDate' }}</span>
+      </div>
+      <app-favorite-btn [favorited]="item.favorited" [favoritesCount]="item.favoritesCount"></app-favorite-btn>
+    </div>
+    <a href="#" class="preview-link">
+      <h1>{{ item.title }}</h1>
+      <p>{{ item.description }}</p>
+      <span>Read more...</span>
+      <ul class="tag-list">
+        <li class="tag-default tag-pill tag-outline" *ngFor="let tag of item.tagList">{{ tag }}</li>
+      </ul>
+    </a>
+  </article>
+</ng-container>
+
+<ng-template #loading>
+  <h1>LOADING...</h1>
+</ng-template>

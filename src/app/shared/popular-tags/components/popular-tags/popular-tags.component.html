@@ -1,0 +1,13 @@
+<p>Popular Tags</p>
+
+<div class="tag-list">
+  <ng-container *ngIf="popularTags$ | async as popularTags; else loading">
+    <a href="#" class="tag-default tag-pill" *ngFor="let item of popularTags">
+      {{ item }}
+    </a>
+  </ng-container>
+
+  <ng-template #loading>
+    <p>Loading...</p>
+  </ng-template>
+</div>

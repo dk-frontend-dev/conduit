@@ -5,16 +5,30 @@
       <p class="text-xs-center">
         <a href="#">Need an account?</a>
       </p>
-      {{ result | json }}
-      <form>
+
+      <app-validation-errors [validationErrors]="validationErrors"></app-validation-errors>
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <fieldset>
           <fieldset class="form-group">
-            <input type="text" class="form-control form-control-lg" placeholder="Username" />
+            <input
+              type="text"
+              class="form-control form-control-lg"
+              placeholder="Email"
+              formControlName="email"
+              required
+            />
           </fieldset>
           <fieldset class="form-group">
-            <input type="password" class="form-control form-control-lg" placeholder="Password" />
+            <input
+              type="password"
+              class="form-control form-control-lg"
+              placeholder="Password"
+              formControlName="password"
+              required
+            />
           </fieldset>
-          <button class="btn btn-lg btn-primary pull-xs-right" type="submit">Sign In</button>
+          <button class="btn btn-lg btn-primary pull-xs-right" type="submit" [disabled]="isSubmitting">Sign In</button>
         </fieldset>
       </form>
     </div>
